@@ -14,7 +14,7 @@ get_header(); ?>
 <p style="margin: 0 0 0 20px">Изменить параметры шорткода можно в index.php </p>
 <?php
 
-	do_shortcode('[employees salary_min="10" salary_max="150" sort="ASC"]');
+	do_shortcode('[employees salary_min="10" salary_max="150" sort="DESC"]');
 
 
 get_footer();

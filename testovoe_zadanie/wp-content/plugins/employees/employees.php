@@ -21,9 +21,3 @@ function employees_activate() {
 
     register_post_type( 'employees', $args ); 
 }
-
-
-// add_action( 'wp_head', 'show_employess' );
-// function show_employess() {
-//     do_shortcode('[employees salary_min="5" salary_max="25"]');
-// }
