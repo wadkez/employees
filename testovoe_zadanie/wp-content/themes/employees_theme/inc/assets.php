@@ -15,6 +15,11 @@
 
                         <?php 
 
+                            // $atts = shortcode_atts( [
+                            //     'name' => 'Noname',
+                            //     'age'  => 18,
+                            // ], $atts );
+
                         if(!empty($atts['sort'])){
 
                             echo '<p>СОРТИРОВКА: ' .$atts['sort'] .'</p>'; 
@@ -55,6 +60,7 @@
                                 <div class="col-md-6">NAME</div>
                                 <div class="col-md-6">SALARY</div>
                             </div>
+
                             <?php
         
                             global $post;
@@ -74,7 +80,7 @@
 
                         } else  {
                             //СОРТИРОВКА ПО ДАТЕ ДОБАВЛЕНИЯ
-                            echo '<p>СОРТИРОВКА В ШОРТКОДЕ НЕ УКАЗАНА - ВЫВОД ПО ДАТЕ</p>';
+                            echo '<p>СОРТИРОВКА В ШОРТКОДЕ НЕ УКАЗАНА - Соортировка ПО ДАТЕ</p>';
                             $meta_query = array(
                                 'post_type'         => 'employees',
                                 'orderby'           => 'date',
@@ -90,18 +96,36 @@
                                 global $post;
 
                             ?>
-
+                    <div class="row">
+                        
+                        <div class="row">
+                            <div class="col-md-4">NAME</div>
+                            <div class="col-md-4">SALARY</div>
+                            <div class="col-md-4">DATE</div>
+                        </div>
                             <?php
                                 while ($query->have_posts()) : $query->the_post(); ?>
-                                <li><a href="<?php the_permalink(); ?>">
-                                    
-                                    <?php echo 'NAME: '  .get_post_meta($post->ID, 'Name', true) . '=========>' . 'SALARY = ' .
-                                    get_post_meta($post->ID, 'Salary', true).  '=========>' ?><?php echo get_the_modified_time('F jS, Y'); ?> - <?php the_time() ?></a></li>
+                                <div class="col-md-4">
+                                    <a href="<?php the_permalink(); ?>"><?php echo get_post_meta($post->ID, 'Name', true) ?></a>
+                                </div>
+                                <div class="col-md-4">
+                                    <a href="<?php the_permalink(); ?>"><?php echo get_post_meta($post->ID, 'Salary', true) ?></a>
+                                </div>
+                                <div class="col-md-4">
+                                    <a href="<?php the_permalink(); ?>">
+                                        <?php echo get_the_modified_time('F jS, Y'); ?>
+                                            <span class="time"><?php the_time(); ?></span> 
+                                        
+                                    </a>
+                                      
+                                </div>
 
                                 <?php endwhile; ?>
+
+                
                           
 
-
+                            </div>
                             <?php
                                 wp_reset_query(); 
                                 

@@ -26,6 +26,10 @@ header .site-title {
   margin: 0 auto;
 }
 
+.time {
+  margin-left: 25px;
+}
+
 footer .site-info {
   display: none;
 }/*# sourceMappingURL=style.css.map */
